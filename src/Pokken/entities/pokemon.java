@@ -1,6 +1,6 @@
-package pesquisa.entities;
-
+package entities;
 public class pokemon {
+    private int id;
     private String nome;
     private String tipo;
     private String regiao;
@@ -8,7 +8,8 @@ public class pokemon {
     public pokemon() {
     }
 
-    public pokemon(String nome, String tipo, String regiao) {
+    public pokemon(int id ,String nome, String tipo, String regiao) {
+        this.id = id;
         this.nome = nome;
         this.tipo = tipo;
         this.regiao = regiao;
@@ -16,11 +17,19 @@ public class pokemon {
 
     @Override
     public String toString() {
-        return "pokemon {" +"\n"+
+        return "Pokemon N°:"+
+                id +"\n"+
                 "nome : "+nome+'\n'+
                 "tipo: "+tipo+'\n'+
-                "regiao: "+regiao+'\n'+
-                '}';
+                "regiao: "+regiao+'\n';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
