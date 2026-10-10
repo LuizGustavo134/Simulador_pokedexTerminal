@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Simulador_pokedexTerminal.iml" filepath="$PROJECT_DIR$/.idea/Simulador_pokedexTerminal.iml" />
       <module fileurl="file://$PROJECT_DIR$/src/simulador.iml" filepath="$PROJECT_DIR$/src/simulador.iml" />
     </modules>
   </component>
