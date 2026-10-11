@@ -1,4 +1,4 @@
-package entities;
+package model;
 public class pokemon {
     private int id;
     private String nome;
