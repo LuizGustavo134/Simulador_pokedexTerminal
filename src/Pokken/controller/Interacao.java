@@ -25,12 +25,13 @@ public class Interacao {
             if (opt == 1){
                 menu2();
             } else if (opt == 2){
-                System.out.println("\n[Aviso] Opção de Batalha Indisponível no momento.");
+                System.out.println("Opção de Batalha Indisponível no momento.");
+                //lista oficial*
             } else if (opt == 3){
-                System.out.println("\nSaindo do programa. Até logo!");
+                System.out.println("Saindo do programa. Até logo!");
                 break;
             } else {
-                System.out.println("\n[Erro] Opção inválida! Tente de novo.");
+                System.out.println(" Opção inválida! Tente de novo.");
             }
         } while (opt != 3);
     }
@@ -64,7 +65,6 @@ public class Interacao {
     public void form1(){
         char res = 'n';
         do {
-
             System.out.print("Informe o nome do Pokémon: ");
             String nome = scan.nextLine();
 

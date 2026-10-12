@@ -2,7 +2,7 @@ import controller.*;
 
 public class main {
     public static void main(String []args){
-        Interacao inter = new Interacao();
+    Interacao inter = new Interacao();
         inter.menuInicial();
     }
 }

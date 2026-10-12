@@ -13,24 +13,20 @@ public class PokeList1 {
         pokedex.add(poker);
         proximoId++;
     }
-
     public int getProximoId() {
         return proximoId;
     }
-
-    // Exibe a lista completa com verificação de segurança
+    // Exibe a lista se houver registros
     public void ExibirTodos(){
         if (pokedex.isEmpty()){
             System.out.println("Pokedex vazia....");
             System.out.println("Registre novos pokémons primeiro!!!");
-            return;
         }
         System.out.println(" Pokedex Completa");
         for (pokemon Pokex : pokedex){
             System.out.println(Pokex);
         }
     }
-
     // Pesquisa com varios critérios
     public void pesquisar(String pesquisa) {
         boolean encontrado = false;
@@ -46,7 +42,6 @@ public class PokeList1 {
             System.out.println("Nenhum Pokémon encontrado no parametro: " + pesquisa );
         }
     }
-
     // Pesquisa por ID
     public boolean pesquisaPorID(int buscaID) {
         boolean encontrado = false;
@@ -62,7 +57,6 @@ public class PokeList1 {
         }
     return encontrado;
     }
-
     // Atualizar
     public void AtualizarPokemon(int buscaID, String novoNome, String novoTipo, String novaRegiao) {
         boolean encontrado = false;

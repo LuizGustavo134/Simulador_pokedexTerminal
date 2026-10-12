@@ -1,4 +1,8 @@
 package model;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class pokemon {
     private int id;
     private String nome;
