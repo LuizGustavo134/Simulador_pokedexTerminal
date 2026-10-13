@@ -3,7 +3,7 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 import model.pokemon;
-
+// Essa classe gerencia os dados modelo CRUD todas as 4 operações apenas isso
 public class PokeList1 {
     private List<pokemon> pokedex = new ArrayList<>();
     private int proximoId = 1; // Controla os IDs para evitar duplicatas

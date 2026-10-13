@@ -3,8 +3,9 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 import model.pokemon;
+// essa classe serve apenas para guardar/moldar os metodos e a lista simulando um DB
 public class ListaOficial {
-    List<pokemon>Kanto = new ArrayList<>();
+     protected List<pokemon>Kanto = new ArrayList<>();
 
     public ListaOficial() {
     }

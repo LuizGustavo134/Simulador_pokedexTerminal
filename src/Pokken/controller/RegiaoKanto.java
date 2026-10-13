@@ -1,7 +1,9 @@
 package controller;
 import model.pokemon;
-//Classe que simula a região de kanto
-public class RegiaoKanto {
+/*Classe que simula a região de kanto.
+* Ela herda tudo da lista oficial por que ambas em teoria são uma só
+* o que uma faz a outra tambem*/
+public class RegiaoKanto extends ListaOficial {
     String[] pokemonsKanto = {
             "001Bulbassauro", "002Ivysaur", "003Venusaur", "004Charmander", "005Charmeleon", "006Charizard",
             "007Squirtle", "008Wartortle", "009Blastoise", "010Caterpie", "011Metapod", "012Butterfree",
@@ -94,11 +96,10 @@ public class RegiaoKanto {
             }
             // objeto a ser enviado
             pokemon PP = new pokemon(id,nome,tipo,regiao);
-            //instância e metodo da lista desejada
-            ListaOficial gg = new ListaOficial();
-            gg.GerarLista(PP);
+            //comando especial usado na herança
+            // super acessa os metodos e atributos herdados
+            super.GerarLista(PP);
         }
 
-       // teste System.out.println("ID: "+id+" nome: "+nome+" tipo: "+tipo +" região: "+regiao);
         }
 }

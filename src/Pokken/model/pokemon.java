@@ -1,8 +1,6 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-
+// Essa classe é apenas a entidade/molde para o "pokemon"
 public class pokemon {
     private int id;
     private String nome;
