@@ -1,18 +1,27 @@
 package model;
+
+// Essa classe é apenas a entidade/molde para o "pokemon"
 public class pokemon {
     private int id;
     private String nome;
-    private String tipo;
+    private String tipoUnico;
     private String regiao;
+    private String golpesEquipados[] = new String[3];
 
     public pokemon() {
     }
-
-    public pokemon(int id ,String nome, String tipo, String regiao) {
+    public pokemon(int id , String nome, String tipoUnico, String regiao) {
         this.id = id;
         this.nome = nome;
-        this.tipo = tipo;
+        this.tipoUnico = tipoUnico;
         this.regiao = regiao;
+    }
+    public pokemon(int id , String nome, String tipoUnico, String regiao, String[] golpesEquipados) {
+        this.id = id;
+        this.nome = nome;
+        this.tipoUnico = tipoUnico;
+        this.regiao = regiao;
+        this.golpesEquipados = golpesEquipados;
     }
 
     @Override
@@ -20,7 +29,7 @@ public class pokemon {
         return "Pokemon N°:"+
                 id +"\n"+
                 "nome : "+nome+'\n'+
-                "tipo: "+tipo+'\n'+
+                "tipo: "+ tipoUnico +'\n'+
                 "regiao: "+regiao+'\n';
     }
 
@@ -40,12 +49,12 @@ public class pokemon {
         this.nome = nome;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getTipoUnico() {
+        return tipoUnico;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTipoUnico(String tipoUnico) {
+        this.tipoUnico = tipoUnico;
     }
 
     public String getRegiao() {

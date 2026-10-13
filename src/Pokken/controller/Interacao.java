@@ -1,70 +1,97 @@
 package controller;
 
 import model.pokemon;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
+// Classe "principal" que intermedia todas a classe do projeto
+// e trata erro genéricos
 public class Interacao {
+    // classes instânciadas para
     Scanner scan = new Scanner(System.in);
     PokeList1 npoke = new PokeList1();
+    RegiaoKanto RK = new RegiaoKanto();
 
-    // Menu Principal do Jogo
-    public void menuInicial(){
+    // 1. Menu Principal do Jogo(tela de inicio)
+    public void menuInicial() {
         int opt = 0;
+       // nucleo principal do projeto
         do {
-            System.out.println("\n=================================");
-            System.out.println("       MENU PRINCIPAL POKÉMON    ");
-            System.out.println("=================================");
-            System.out.println("(1) Acessar a Pokédex");
-            System.out.println("(2) Batalha Pokémon (Indisponível)");
-            System.out.println("(3) Sair");
-            System.out.print("Escolha uma opção: ");
+            // tratamento de erros que se estende pelas outras classes
+            try {
+            System.out.println("| ================================= |");
+            System.out.println("|        MENU PRINCIPAL POKÉMON     |");
+            System.out.println("| ================================= |");
+            System.out.println("| (1) Acessar a Pokédex             |");
+            System.out.println("| (2) Acessar o menu de Batalha     |");
+            System.out.println("| (3) Sair                          |");
+            System.out.print("| Escolha uma opção:                   |");
 
             opt = scan.nextInt();
             scan.nextLine(); // Limpa o buffer
 
-            if (opt == 1){
+            if (opt == 1) {
                 menu2();
-            } else if (opt == 2){
+            } else if (opt == 2) {
                 System.out.println("\n[Aviso] Opção de Batalha Indisponível no momento.");
-            } else if (opt == 3){
+                System.out.print("Deseja ver a Pokédex oficial de Kanto? (y/n): ");
+                char opt2 = scan.nextLine().charAt(0);
+
+                if (opt2 == 'y' || opt2 == 'Y') {
+                    RK.GerarPokemon();
+                    RK.ExibirTodos();
+                }
+            } else if (opt == 3) {
                 System.out.println("\nSaindo do programa. Até logo!");
                 break;
             } else {
-                System.out.println("\n[Erro] Opção inválida! Tente de novo.");
+                System.out.println("\nOpção inválida! Tente de novo.");
             }
+
+            } catch ( InputMismatchException inputMismatchException){
+                System.out.println("dados inválidos!");
+                System.out.println("digite corretamente para continuar");
+                scan.nextLine(); //obrigatório para que o "loop" não quebre
+            }// fim das exceções
         } while (opt != 3);
     }
 
-    // Submenu da Pokédex
-    public void menu2(){
+    // 2. Submenu (inicio do CRUD)
+    public void menu2() {
         int opt = 0;
         do {
-            System.out.printf("(1) Adicionar Pokémon (2) Pesquisar Pokémon");
-            System.out.println("(3) Atualizar/Deletar Pokémon (4) Voltar ao Menu Inicial");
+            System.out.println("\n---------------------------------");
+            System.out.println("         MENU DA POKÉDEX         ");
+            System.out.println("---------------------------------");
+            System.out.println("(1) Adicionar Pokémon");
+            System.out.println("(2) Pesquisar Pokémon");
+            System.out.println("(3) Atualizar / Deletar Pokémon");
+            System.out.println("(4) Voltar ao Menu Inicial");
             System.out.print("Escolha uma opção: ");
 
             opt = scan.nextInt();
             scan.nextLine(); // Limpa o buffer
 
-            if (opt == 1){
+            if (opt == 1) {
                 form1();
             } else if (opt == 2) {
                 form2();
             } else if (opt == 3) {
                 form3();
             } else if (opt == 4) {
-                break; // Sai do menu2 de forma limpa e volta para o menuInicial
+                break; // Sai do menu2 e volta para o menuInicial
             } else {
-                System.out.println("Opção inválida! Tente de novo.");
+                System.out.println("\nOpção inválida! Tente de novo.");
             }
         } while (opt != 4);
     }
-
-    // CREATE (Adicionar)
-    public void form1(){
+    //manipulação manual de dados
+    // 3. CREATE
+    public void form1() {
         char res = 'n';
         do {
-
+            System.out.println("\n--- CADASTRO DE NOVO POKÉMON ---");
             System.out.print("Informe o nome do Pokémon: ");
             String nome = scan.nextLine();
 
@@ -74,27 +101,31 @@ public class Interacao {
             System.out.print("Informe a região do Pokémon: ");
             String regiao = scan.nextLine();
 
-            // Pega o ID sequencial seguro
+            // Pega o proximo ID para ordenar
             int id = npoke.getProximoId();
 
+            // criando o primeiro obj
             pokemon poker = new pokemon(id, nome, tipo, regiao);
             npoke.AddPokemon(poker);
             System.out.println("Pokémon cadastrado com sucesso! (ID atribuído: " + id + ")");
 
-            System.out.print("Deseja voltar ao menu anterior? (y/n): ");
+            //controle de formulário
+            System.out.print("\nDeseja voltar ao menu anterior? (y/n): ");
             res = scan.nextLine().charAt(0);
+
+          //quebra de loop
         } while (res != 'y' && res != 'Y');
     }
 
-    // READ
-    public void form2(){
+    // 4. Consultar Pokémons
+    public void form2() {
         char resp = 'n';
         do {
-            System.out.println("Consultar pokedex");
+            System.out.println("\n--- CONSULTA DE POKÉMONS ---");
             System.out.print("Deseja ver todos os pokémons? (y/n): ");
             char a = scan.nextLine().charAt(0);
 
-            if (a == 'y' || a == 'Y'){
+            if (a == 'y' || a == 'Y') {
                 npoke.ExibirTodos();
             } else {
                 System.out.print("Informe o Nome, Tipo ou Região que deseja pesquisar: ");
@@ -107,17 +138,20 @@ public class Interacao {
         } while (resp == 'y' || resp == 'Y');
     }
 
-    // Update/Delete
-    public void form3(){
+    // 5. UPDATE / DELETE (Atualizar ou Excluir Registros)
+    public void form3() {
         int res = 0;
         do {
-            System.out.println("(1) Atualizar Pokémon (2) Deletar Pokémon (3) Voltar");
+            System.out.println("\n--- GERENCIAMENTO DE REGISTROS ---");
+            System.out.println("(1) Atualizar Pokémon");
+            System.out.println("(2) Deletar Pokémon");
+            System.out.println("(3) Voltar");
             System.out.print("Escolha uma opção: ");
 
             res = scan.nextInt();
             scan.nextLine(); // Limpa o buffer
 
-            if (res == 1){
+            if (res == 1) {
                 System.out.print("Informe o ID do Pokémon que deseja atualizar: ");
                 int buscaID = scan.nextInt();
                 scan.nextLine();
@@ -131,16 +165,14 @@ public class Interacao {
 
                 npoke.AtualizarPokemon(buscaID, novoNome, novoTipo, novaRegiao);
 
-            } else if (res == 2){
+            } else if (res == 2) {
                 System.out.print("Informe o ID do Pokémon que deseja deletar: ");
                 int buscaID = scan.nextInt();
                 scan.nextLine();
 
-                if (!npoke.pesquisaPorID(buscaID)){
+                if (!npoke.pesquisaPorID(buscaID)) {
                     break;
                 }
-                // Exibe o Pokémon para confirmar
-                npoke.pesquisaPorID(buscaID);
 
                 System.out.println("Tem certeza que deseja deletar esse Pokémon?");
                 System.out.println("Obs: Não é possível reverter!");
@@ -155,7 +187,7 @@ public class Interacao {
             } else if (res == 3) {
                 break; // Sai do form3 de forma limpa e volta para o menu2
             } else {
-                System.out.println("Opção inválida!");
+                System.out.println("\nOpção inválida!");
             }
         } while (res != 3);
     }

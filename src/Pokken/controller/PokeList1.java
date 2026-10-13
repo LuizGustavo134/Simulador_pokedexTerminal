@@ -3,7 +3,7 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 import model.pokemon;
-
+// Essa classe gerencia os dados modelo CRUD todas as 4 operações apenas isso
 public class PokeList1 {
     private List<pokemon> pokedex = new ArrayList<>();
     private int proximoId = 1; // Controla os IDs para evitar duplicatas
@@ -13,31 +13,27 @@ public class PokeList1 {
         pokedex.add(poker);
         proximoId++;
     }
-
     public int getProximoId() {
         return proximoId;
     }
-
-    // Exibe a lista completa com verificação de segurança
+    // Exibe a lista se houver registros
     public void ExibirTodos(){
         if (pokedex.isEmpty()){
             System.out.println("Pokedex vazia....");
             System.out.println("Registre novos pokémons primeiro!!!");
-            return;
         }
         System.out.println(" Pokedex Completa");
         for (pokemon Pokex : pokedex){
             System.out.println(Pokex);
         }
     }
-
-    // Pesquisa com varios critérios
+    // Pesquisa com vários critérios
     public void pesquisar(String pesquisa) {
         boolean encontrado = false;
         for (pokemon Pokex : pokedex) {
             if (Pokex.getNome().equalsIgnoreCase(pesquisa) ||
                     Pokex.getRegiao().equalsIgnoreCase(pesquisa) ||
-                    Pokex.getTipo().equalsIgnoreCase(pesquisa)){
+                    Pokex.getTipoUnico().equalsIgnoreCase(pesquisa)){
                 System.out.println(Pokex);
                 encontrado = true;
             }
@@ -46,7 +42,6 @@ public class PokeList1 {
             System.out.println("Nenhum Pokémon encontrado no parametro: " + pesquisa );
         }
     }
-
     // Pesquisa por ID
     public boolean pesquisaPorID(int buscaID) {
         boolean encontrado = false;
@@ -69,7 +64,7 @@ public class PokeList1 {
         for (pokemon Pokex : pokedex) {
             if (buscaID == Pokex.getId()){
                 Pokex.setNome(novoNome);
-                Pokex.setTipo(novoTipo);
+                Pokex.setTipoUnico(novoTipo);
                 Pokex.setRegiao(novaRegiao);
                 System.out.println("Pokémon atualizado com sucesso!");
                 encontrado = true;
