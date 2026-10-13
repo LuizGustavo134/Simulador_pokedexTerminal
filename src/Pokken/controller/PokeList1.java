@@ -27,13 +27,13 @@ public class PokeList1 {
             System.out.println(Pokex);
         }
     }
-    // Pesquisa com varios critérios
+    // Pesquisa com vários critérios
     public void pesquisar(String pesquisa) {
         boolean encontrado = false;
         for (pokemon Pokex : pokedex) {
             if (Pokex.getNome().equalsIgnoreCase(pesquisa) ||
                     Pokex.getRegiao().equalsIgnoreCase(pesquisa) ||
-                    Pokex.getTipo().equalsIgnoreCase(pesquisa)){
+                    Pokex.getTipoUnico().equalsIgnoreCase(pesquisa)){
                 System.out.println(Pokex);
                 encontrado = true;
             }
@@ -57,13 +57,14 @@ public class PokeList1 {
         }
     return encontrado;
     }
+
     // Atualizar
     public void AtualizarPokemon(int buscaID, String novoNome, String novoTipo, String novaRegiao) {
         boolean encontrado = false;
         for (pokemon Pokex : pokedex) {
             if (buscaID == Pokex.getId()){
                 Pokex.setNome(novoNome);
-                Pokex.setTipo(novoTipo);
+                Pokex.setTipoUnico(novoTipo);
                 Pokex.setRegiao(novaRegiao);
                 System.out.println("Pokémon atualizado com sucesso!");
                 encontrado = true;

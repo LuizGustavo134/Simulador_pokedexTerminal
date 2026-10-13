@@ -1,5 +1,5 @@
 package controller;
-import model.pokemon;
+import model.*;
 /*Classe que simula a região de kanto.
 * Ela herda tudo da lista oficial por que ambas em teoria são uma só
 * o que uma faz a outra tambem*/
@@ -29,6 +29,7 @@ public class RegiaoKanto extends ListaOficial {
             "143Snorlax", "144Articuno", "145Zapdos", "146Moltres", "147Dratini", "148Dragonair", "149Dragonite",
             "150Mewtwo", "151Mew"
     };
+    golpes gol = new golpes();
     //gera um pokemon automaticamente com todos atributos
     public void GerarPokemon(){
         int id =0 ;
@@ -36,15 +37,18 @@ public class RegiaoKanto extends ListaOficial {
         String tipo =" ";
         String regiao = "Kanto";
         for (int i = 0; i< pokemonsKanto.length; i++){
-            //Usei os chars junto ao for para pesquisar no vetor o pokemon certo
+            //Usei os chars como paremêtro de busca junto ao "for" para
+            // pesquisar no vetor o pokemon certo
             char id1 = pokemonsKanto[i].charAt(0);
             char id2 = pokemonsKanto[i].charAt(1);
             char id3 = pokemonsKanto[i].charAt(2);
+
+            //gambiarra para evitar sql no momento
             String idTemp = id1+""+id2+id3;
             id = Integer.parseInt(idTemp);
-            //formata o texto nome e remover a numeração
             nome = pokemonsKanto[i].substring(3 );
-            // usei o switch para evitar os If's infinitos
+
+            // O switch evita infinitos if's e tipificar o pokemon certo
             switch (id) {
                 case 1, 2, 3, 43, 44, 45, 46, 47, 69, 70, 71, 102, 103, 114:
                     tipo = "Planta";
@@ -94,10 +98,10 @@ public class RegiaoKanto extends ListaOficial {
                     tipo = "Normal";
                     break;
             }
-            // objeto a ser enviado
+
+            // objeto a ser enviado usando o atributo super
+            // exclusivo da herança
             pokemon PP = new pokemon(id,nome,tipo,regiao);
-            //comando especial usado na herança
-            // super acessa os metodos e atributos herdados
             super.GerarLista(PP);
         }
 

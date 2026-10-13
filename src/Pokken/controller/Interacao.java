@@ -1,20 +1,25 @@
 package controller;
 
 import model.pokemon;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-// Classe responsável por coordenar a interação com o usuário e o fluxo de telas
+// Classe "principal" que intermedia todas a classe do projeto
+// e trata erro genéricos
 public class Interacao {
-
+    // classes instânciadas para
     Scanner scan = new Scanner(System.in);
     PokeList1 npoke = new PokeList1();
-    ListaOficial LOF = new ListaOficial();
     RegiaoKanto RK = new RegiaoKanto();
 
-    // 1. Menu Principal do Jogo (Ponto de Entrada)
+    // 1. Menu Principal do Jogo(tela de inicio)
     public void menuInicial() {
         int opt = 0;
+       // nucleo principal do projeto
         do {
+            // tratamento de erros que se estende pelas outras classes
+            try {
             System.out.println("| ================================= |");
             System.out.println("|        MENU PRINCIPAL POKÉMON     |");
             System.out.println("| ================================= |");
@@ -43,10 +48,16 @@ public class Interacao {
             } else {
                 System.out.println("\nOpção inválida! Tente de novo.");
             }
+
+            } catch ( InputMismatchException inputMismatchException){
+                System.out.println("dados inválidos!");
+                System.out.println("digite corretamente para continuar");
+                scan.nextLine(); //obrigatório para que o "loop" não quebre
+            }// fim das exceções
         } while (opt != 3);
     }
 
-    // 2. Submenu da Pokédex (Gerenciamento do CRUD)
+    // 2. Submenu (inicio do CRUD)
     public void menu2() {
         int opt = 0;
         do {
@@ -69,14 +80,14 @@ public class Interacao {
             } else if (opt == 3) {
                 form3();
             } else if (opt == 4) {
-                break; // Sai do menu2 de forma limpa e volta para o menuInicial
+                break; // Sai do menu2 e volta para o menuInicial
             } else {
                 System.out.println("\nOpção inválida! Tente de novo.");
             }
         } while (opt != 4);
     }
-
-    // 3. CREATE (Adicionar novo Pokémon)
+    //manipulação manual de dados
+    // 3. CREATE
     public void form1() {
         char res = 'n';
         do {
@@ -90,19 +101,23 @@ public class Interacao {
             System.out.print("Informe a região do Pokémon: ");
             String regiao = scan.nextLine();
 
-            // Pega o ID sequencial seguro
+            // Pega o proximo ID para ordenar
             int id = npoke.getProximoId();
 
+            // criando o primeiro obj
             pokemon poker = new pokemon(id, nome, tipo, regiao);
             npoke.AddPokemon(poker);
             System.out.println("Pokémon cadastrado com sucesso! (ID atribuído: " + id + ")");
 
+            //controle de formulário
             System.out.print("\nDeseja voltar ao menu anterior? (y/n): ");
             res = scan.nextLine().charAt(0);
+
+          //quebra de loop
         } while (res != 'y' && res != 'Y');
     }
 
-    // 4. READ (Consultar Pokémons)
+    // 4. Consultar Pokémons
     public void form2() {
         char resp = 'n';
         do {
