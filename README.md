@@ -1,5 +1,5 @@
 ===================================================================================
-
+---
 
 🕹️ Simulador de Pokédex em Java (Console RPG)
   Um projeto robusto desenvolvido em **Java Puro** focado em Programação Orientada a Objetos (POO), 
@@ -8,7 +8,7 @@
 
 
 ===================================================================================
-
+---
 
   
 🎯 Sobre o Projeto
