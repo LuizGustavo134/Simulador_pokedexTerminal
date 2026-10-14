@@ -1,4 +1,4 @@
-=================================================================================---
+============================================================================
 
 
 🕹️ Simulador de Pokédex em Java (Console RPG)
@@ -7,7 +7,7 @@
   de Pokemon(Kanto).
 
 
-================================================================================---
+============================================================================
 
   
 🎯 Sobre o Projeto
@@ -16,7 +16,7 @@ software, priorizando o uso das estruturas nativas da linguagem(conceito básico
 (abordagem pragmática e offline) ou complexas.
 
 
-===================================================================================
+============================================================================
 
 
 🚀 Principais Funcionalidades e Decisões Arquiteturais
@@ -31,7 +31,7 @@ Status: concluida
 Status: Em desenvolvimento
 
 
-===================================================================================
+============================================================================
 2. Sistema de Golpes e Restrições de Domínio | Status: Em desenvolvimento
 - Vetor de 4 Slots: Cada Pokémon possui um vetor estático de tamanho fixo, para gerenciar seus ataques equipados, garantindo a regra clássica dos jogos nativamente pela estrutura de dados sem algoritmos complexos de limpeza.
 -Catálogo de Golpes: Estrutura organizada contendo os ataques clássicos divididos pelos 15 tipos originais da primeira geração.
@@ -39,7 +39,7 @@ Status: Em desenvolvimento
 Em desenvolvimento
 
 
-===================================================================================
+============================================================================
 
 3. Tratamento de Erros e Resiliência Status: Em desenvolvimento
 -Arquitetura Limpa de Exceções: Abordagem centralizada de tratamento de erros utilizando blocos `try-catch` no loop de menu principal (`Interacao`), mantendo as classes de negócio limpas, desacopladas e aplicando a propagação de exceções de forma fluida.
@@ -47,8 +47,7 @@ Em desenvolvimento
 Atualizando
 
 
-===================================================================================
-
+============================================================================
 
 4. Gerenciamento de Dados (CRUD Completo)
 - Operações completas de Criação, Leitura, Atualização e Deleção integradas ao console de forma manual e simplificada ao usuário,
@@ -56,7 +55,7 @@ Atualizando
 
    Status: concluido
 
-===================================================================================
+============================================================================
   
 🛠️ Tecnologias e Conceitos Aplicados
 - Linguagem: Java 
@@ -70,7 +69,7 @@ main (nucleo principal)
 golpes (teste de desenvolvimento)
 
 
-===================================================================================
+============================================================================
 
 
 ## 📂 Como Executar o Projeto
