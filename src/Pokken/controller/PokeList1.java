@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import model.pokemon;
 // Essa classe gerencia os dados modelo CRUD todas as 4 operações apenas isso
@@ -30,10 +31,13 @@ public class PokeList1 {
     // Pesquisa com vários critérios
     public void pesquisar(String pesquisa) {
         boolean encontrado = false;
+        String temp = pesquisa;
         for (pokemon Pokex : pokedex) {
             if (Pokex.getNome().equalsIgnoreCase(pesquisa) ||
                     Pokex.getRegiao().equalsIgnoreCase(pesquisa) ||
-                    Pokex.getTipoUnico().equalsIgnoreCase(pesquisa)){
+            temp.equalsIgnoreCase(Pokex.getTipos()[0]) ||
+            temp.equalsIgnoreCase(Pokex.getTipos()[0]))
+                     {
                 System.out.println(Pokex);
                 encontrado = true;
             }
@@ -59,12 +63,12 @@ public class PokeList1 {
     }
 
     // Atualizar
-    public void AtualizarPokemon(int buscaID, String novoNome, String novoTipo, String novaRegiao) {
+    public void AtualizarPokemon(int buscaID, String novoNome, String[] novoTipo, String novaRegiao) {
         boolean encontrado = false;
         for (pokemon Pokex : pokedex) {
             if (buscaID == Pokex.getId()){
                 Pokex.setNome(novoNome);
-                Pokex.setTipoUnico(novoTipo);
+                Pokex.setTipos(novoTipo);
                 Pokex.setRegiao(novaRegiao);
                 System.out.println("Pokémon atualizado com sucesso!");
                 encontrado = true;

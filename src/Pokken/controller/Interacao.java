@@ -94,9 +94,26 @@ public class Interacao {
             System.out.println("\n--- CADASTRO DE NOVO POKÉMON ---");
             System.out.print("Informe o nome do Pokémon: ");
             String nome = scan.nextLine();
-
-            System.out.print("Informe o tipo do Pokémon: ");
-            String tipo = scan.nextLine();
+            String[] tipos = null;
+            int xp =1;
+            while (xp > 0) {
+                System.out.println("Informe o 1° e 2° tipo do Pokémon: ");
+                System.out.printf("1°: ");
+                String tipo1 = scan.nextLine();
+                System.out.printf("2°: ");
+                String tipo2 = scan.nextLine();
+                if (tipo1.isEmpty() && tipo2.isEmpty()){
+                    System.out.println("informe 1 tipo ao menos!!!");
+                } else if (tipo1.isEmpty()) {
+                    System.out.println("1°tipo obrigatório!");
+                } else if (tipo2.isEmpty()) {
+                    tipos = new String[]{tipo1};
+                    xp = -1;
+                } else {
+                    tipos = new String[]{tipo1,tipo2};
+                    xp = -1;
+                }
+            }
 
             System.out.print("Informe a região do Pokémon: ");
             String regiao = scan.nextLine();
@@ -105,7 +122,7 @@ public class Interacao {
             int id = npoke.getProximoId();
 
             // criando o primeiro obj
-            pokemon poker = new pokemon(id, nome, tipo, regiao);
+            pokemon poker = new pokemon(id, nome, tipos, regiao);
             npoke.AddPokemon(poker);
             System.out.println("Pokémon cadastrado com sucesso! (ID atribuído: " + id + ")");
 
@@ -159,7 +176,7 @@ public class Interacao {
                 System.out.print("Informe o novo nome: ");
                 String novoNome = scan.nextLine();
                 System.out.print("Informe o novo tipo: ");
-                String novoTipo = scan.nextLine();
+                String[] novoTipo = {scan.nextLine()};
                 System.out.print("Informe a nova região: ");
                 String novaRegiao = scan.nextLine();
 

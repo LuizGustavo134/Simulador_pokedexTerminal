@@ -20,4 +20,8 @@ public class ListaOficial {
             for (pokemon PokedexOficial : Kanto) {
                 System.out.println(PokedexOficial);
             }
-        }}}
+        }
+
+    }
+
+}
